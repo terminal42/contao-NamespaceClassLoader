@@ -32,6 +32,13 @@ class NamespaceClassLoader
 
     private static $loader;
 
+    public static function loadClassLoader($class)
+    {
+        if ('Composer\Autoload\ClassLoader' === $class) {
+            require TL_ROOT . '/system/modules/_autoload/library/Composer/Autoload/ClassLoader.php';
+        }
+    }
+
     /**
      * Return the PSR-0 ClassLoader instance
      */
@@ -39,15 +46,15 @@ class NamespaceClassLoader
     {
         if (static::$loader === null) {
 
-            require_once(TL_ROOT . '/system/modules/_autoload/library/Composer/Autoload/ClassLoader.php');
-
-            static::$loader = new \Composer\Autoload\ClassLoader();
+            spl_autoload_register(array('NamespaceClassLoader', 'loadClassLoader'), true, true);
+            static::$loader = $loader = new \Composer\Autoload\ClassLoader();
+            spl_autoload_unregister(array('NamespaceClassLoader', 'loadClassLoader'));
             static::$loader->register();
         }
 
         return static::$loader;
     }
-
+ 
     /**
      * Registers a set of classes
      *

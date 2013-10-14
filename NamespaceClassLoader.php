@@ -35,7 +35,13 @@ class NamespaceClassLoader
     public static function loadClassLoader($class)
     {
         if ('Composer\Autoload\ClassLoader' === $class) {
-            require TL_ROOT . '/system/modules/_autoload/library/Composer/Autoload/ClassLoader.php';
+	        if(file_exists(TL_ROOT . '/composer/vendor/composer/ClassLoader.php'))
+            {
+                require_once(TL_ROOT . '/composer/vendor/composer/ClassLoader.php');
+            }
+            else {
+                require_once(TL_ROOT . '/system/modules/_autoload/library/Composer/Autoload/ClassLoader.php');
+            }
         }
     }
 

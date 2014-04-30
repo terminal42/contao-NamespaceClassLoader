@@ -1,5 +1,5 @@
 {
-    "name":"terminal42/contao-NamespaceClassLoader",
+    "name":"terminal42/contao-namespace-class-loader",
     "description":"Namespace class loader for Contao Open Source CMS",
     "keywords":["contao", "classloader"],
     "type":"contao-module",

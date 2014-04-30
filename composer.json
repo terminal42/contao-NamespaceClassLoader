@@ -16,7 +16,7 @@
         "contao-community-alliance/composer-installer":"*"
     },
     "replace": {
-        "contao-legacy/notification_center": "self.version"
+        "contao-legacy/namespaceclassloader": "self.version"
     },
     "extra":{
         "contao": {

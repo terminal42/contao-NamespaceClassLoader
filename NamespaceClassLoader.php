@@ -83,7 +83,7 @@ class NamespaceClassLoader
     private static function addContaoRoot($path)
     {
         if (is_array($path)) {
-            return array_map(array(self, 'addContaoRoot'), $path);
+            return array_map(array(__CLASS__, 'addContaoRoot'), $path);
         }
 
         return TL_ROOT . '/' . $path;
